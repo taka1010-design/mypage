@@ -19,7 +19,8 @@ a {
 
 .top-wrapper {
   padding: 180px 0 100px 0;
-  background-image: url(top.png);
+  /* background-image: url(top.png); */
+  background-image: url(study.jpg);
   background-size: cover;
   color: white;
   text-align: center;
@@ -78,15 +79,16 @@ a {
 header {
   height: 65px;
   width: 100%;
-  background-color: rgba(34,49,52,0.9);
+  background-color: cadetblue;
+
   position :fixed;
   top: 0;
   z-index: 10;
 }
 
 .logo {
-  width: 124px;
-  margin-top: 20px;
+    width: 40px;
+    margin-top: 14px;
 }
 
 .header-left {
@@ -127,7 +129,7 @@ header {
 }
 
 .heading h2 {
-  font-weight: normal;
+  font-weight: bold;
 }
 
 .lesson {

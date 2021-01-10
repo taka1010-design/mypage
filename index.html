@@ -38,6 +38,12 @@
       <div class="heading">
         <h2>Learn Where to Get Started!</h2>
       </div>
+
+
+      <p>音の結果：<span id="result"></span></p>
+      <button id="startButton">絶対音感チャレンジ</button>
+      <button id="resultButton">結果を見る</button>
+
       <div class="lessons">
         <div class="lesson">
           <div class="lesson-icon">
@@ -86,5 +92,69 @@
       <p>Learn to Code, Learn to be Creative.</p>
     </div>
   </footer>
+  <script  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  
+integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="  crossorigin="anonymous"></script>
+  <script>
+    var results = [
+      "do.mp3",
+      "re.mp3",
+      "mi.mp3",
+      "fa.mp3",
+      "so.mp3",
+      "ra.mp3",
+      "si.mp3"
+    ];
+    // ボタンを押した際の動作
+    $('#startButton').on('click', function() {
+      var random = Math.floor( Math.random() * results.length );
+      var result =  results[random];
+      //音実行
+      init(result);
+      music.loop = false;
+      music.play();
+      //音のテキスト設定
+      if (result == "do.mp3") {
+        result = "ド";
+      }
+      else if (result == "re.mp3") {
+        result = "レ";
+      }
+      else if (result == "mi.mp3") {
+        result = "ミ";
+      }
+      else if (result == "fa.mp3") {
+        result = "ファ";
+      }
+      else if (result == "so.mp3") {
+        result = "ソ";
+      }
+      else if (result == "ra.mp3") {
+        result = "ラ";
+      }
+      else if (result == "si.mp3") {
+        result = "シ";
+      }
+      $('#result').html(result);
+      $('#result').hide();
+      
+    });
+    $('#resultButton').on('click', function() {
+   
+      $('#result').show();
+    });
+
+   
+    
+    var music = new Audio();
+    function init(result) {
+      music.src = result;
+      music.loop = false;
+      music.load();
+
+      
+    }
+
+   
+</script>
 </body>
 </html>

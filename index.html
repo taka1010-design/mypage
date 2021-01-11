@@ -15,9 +15,9 @@
       </div>
       <span class="fa fa-bars menu-icon"></span>
       <div class="header-right">
-        <a href="https://prog-8.com/dashboard">profile</a>
-        <a href="#">words</a>
-        <a href="#" class="login">about piano</a>
+        <a href="#1">profile</a>
+        <a href="#2">words</a>
+        <a href="#3" class="login">about piano</a>
       </div>
     </div>
   </header>
@@ -37,13 +37,13 @@
       </div>
 
 
-    
+
 
       <div class="lessons">
         <div class="lesson">
           <div class="lesson-icon">
             <img src="https://prog-8.com/images/html/advanced/html.png">
-            <p>HTML & CSS</p>
+            <p>当たり前</p>
           </div>
           <p class="text-contents">ウェブページの作成に使用される言語です。HTMLとCSSを組み合わせることで、静的なページを作り上げることができます。</p>
         </div>
@@ -72,13 +72,15 @@
       <div class="clear"></div>
     </div>
   </div>
-  <div class="message-wrapper">
+  <div id="3" class="message-wrapper">
     <div class="container">
       <div class="heading">
-        <h2>さぁ、あなたもProgateでプログラミングを学んでみませんか?</h2>
-        <h3>Let's learn to code, learn to be creative!</h3>
+        <h2>小さな努力を積み重ねることができる人間だけ大きな成功を収めることができる。</h2>
+        <h3>Only humans who can make small efforts can achieve great success.</h3>
       </div>
-      
+      <div>
+        <iframe width="100%" height="700" src="https://www.youtube.com/embed/xhqsgyC9Hwk?autoplay=1&mute=1&controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
   <footer>
@@ -87,6 +89,8 @@
       
     </div>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+
   <script  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  
 integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="  crossorigin="anonymous"></script>
   <script>
@@ -149,7 +153,35 @@ integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="  crossorigin="an
       
     }
 
-   
+  var tm = new TimelineMax();
+  // 右に移動
+  tm.from( ".lesson", 1, {
+      "x" : 5,
+      ease : Power4.easeOut
+    } )
+    // 大きくする
+    .from( ".lesson", 2, {
+      scale : 0.5
+    });
+    
+    $(function(){
+  // #で始まるアンカーをクリックした場合に処理
+  $('.s_01 a[href^=#]').click(function(){
+    // 移動先を0px調整する。0を30にすると30px下にずらすことができる。
+    var adjust = 0;
+    // スクロールの速度
+    var speed = 400; // ミリ秒
+    // アンカーの値取得
+    var href= $(this).attr("href");
+    // 移動先を取得
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    // 移動先を調整
+    var position = target.offset().top + adjust;
+    // スムーススクロール
+    $('body,html').animate({scrollTop:position}, speed, 'swing');
+    return false;
+  });
+});
 </script>
 </body>
 </html>
